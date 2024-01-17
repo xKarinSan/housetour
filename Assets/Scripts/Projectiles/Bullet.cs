@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     // Start is called before the first frame update
     // called when script is loaded
-    public double bulletDamage = 2;
+    public double bulletDamage = 4;
     private void Awake()
     {
 
