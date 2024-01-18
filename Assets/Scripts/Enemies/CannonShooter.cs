@@ -17,8 +17,11 @@ public class CannonShooter : MonoBehaviour
 
 
     // for firing bullets
-    public float fireRate = 5;
+    public float fireRate = 0.25f;
     public float lastTimeFired = 0;
+    public GameObject projectile;
+    public Transform bulletFiringPoint;
+    public float bulletTravelVelocity = 5f;
 
     void horizonalRotation()
     {
@@ -40,14 +43,16 @@ public class CannonShooter : MonoBehaviour
 
     void fireProjectile()
     {
+        Debug.Log("Firing");
         if(Time.time >= lastTimeFired + (1/fireRate))
         {
-            Debug.Log("Shot you!");
+            Debug.Log("Shot you! "+Time.time);
+            GameObject bullet = Instantiate(projectile, bulletFiringPoint.position, bulletFiringPoint.rotation);
+            bullet.GetComponent<Rigidbody>().velocity = horizontalRotateTransform.forward * bulletTravelVelocity;
+
             lastTimeFired = Time.time;
         }
     }
-
-
 
     void verticalRotation()
     {
