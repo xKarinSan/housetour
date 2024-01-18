@@ -43,13 +43,10 @@ public class CannonShooter : MonoBehaviour
 
     void fireProjectile()
     {
-        Debug.Log("Firing");
         if(Time.time >= lastTimeFired + (1/fireRate))
         {
-            Debug.Log("Shot you! "+Time.time);
             GameObject bullet = Instantiate(projectile, bulletFiringPoint.position, bulletFiringPoint.rotation);
             bullet.GetComponent<Rigidbody>().velocity = horizontalRotateTransform.forward * bulletTravelVelocity;
-
             lastTimeFired = Time.time;
         }
     }
@@ -67,7 +64,6 @@ public class CannonShooter : MonoBehaviour
         }
 
         float deltaAngle = isUp ? -0.05f : 0.05f;
-        //xAngle = Mathf.Clamp(xAngle + deltaAngle, 320f, 360f);
         xAngle += deltaAngle;
         Quaternion newRotation = Quaternion.Euler(xAngle, verticalRotateTransform.localRotation.eulerAngles.y, verticalRotateTransform.localRotation.eulerAngles.z);
         verticalRotateTransform.localRotation = newRotation;

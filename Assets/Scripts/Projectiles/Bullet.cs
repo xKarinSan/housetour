@@ -15,8 +15,6 @@ public class Bullet : MonoBehaviour
     // called upon collision
     private void OnCollisionEnter(Collision collision)
     {
-        //Destroy(collision.gameObject);
-        //Destoryable collidedObject = collision.
         Destoryable collisionTarget = collision.gameObject.GetComponent<Destoryable>();
         if (collisionTarget != null)
         {
